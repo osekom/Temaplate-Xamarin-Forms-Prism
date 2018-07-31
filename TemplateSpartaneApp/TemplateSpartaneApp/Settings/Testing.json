@@ -1,0 +1,8 @@
+﻿{
+  "BaseUrl": "http://www.spartane.com/ALMwebapi/api",
+  "UrlToken": "http://www.spartane.com/ALMwebapi/oauth/token",
+  "BaseUrlImage": "",
+  "UserToken": "admin",
+  "PassToken": "admin",
+  "NameDB": "dbalm.db3"
+}

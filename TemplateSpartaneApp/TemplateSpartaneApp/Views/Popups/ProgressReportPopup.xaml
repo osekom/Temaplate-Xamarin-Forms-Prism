@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="TemplateSpartaneApp.Views.Popups.ProgressReportPopup">
+    <StackLayout HorizontalOptions="FillAndExpand" 
+                VerticalOptions="Center"
+                Margin="30,0,30,0"
+                HeightRequest="280"
+                BackgroundColor="Transparent">
+        <Frame
+            Padding="5"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            CornerRadius="10"
+            HasShadow="false"
+            BackgroundColor="White">
+
+            <StackLayout Margin="15">
+                <Label FontSize="Medium" HorizontalOptions="CenterAndExpand" Text="Progress Report"/>
+            
+                <Entry Placeholder="Description" Text="{Binding Description}" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"/>
+
+                <Button BorderColor="Teal" TextColor="Teal" Text="Save" BorderWidth="2" BackgroundColor="White" Command="{Binding SaveCommand}" HorizontalOptions="Fill" VerticalOptions="End"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

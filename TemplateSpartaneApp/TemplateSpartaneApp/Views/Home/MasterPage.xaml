@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
+    x:Class="TemplateSpartaneApp.Views.Home.MasterPage">
+    <MasterDetailPage.Master>
+        <ContentPage
+            Title="Menú"
+            BackgroundColor="#F6F6F8">
+            <StackLayout Margin="20,50" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F6F6F8">
+                <Image Source="logo.png" HorizontalOptions="CenterAndExpand" WidthRequest="130">
+                </Image>
+                <BoxView HorizontalOptions="Fill" HeightRequest="1" BackgroundColor="Teal"/>
+                <ListView HasUnevenRows="false" SeparatorVisibility="Default" SeparatorColor="Teal" BackgroundColor="#F6F6F8"   ItemsSource="{Binding ItemsMenu}" SelectedItem="{Binding SelectItem}">
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="0,10">
+                                        <Image Source="{ Binding Icon }" VerticalOptions="Center" />
+                                        <Label Text="{ Binding MenuTitle }" TextColor="Black" LineBreakMode="WordWrap" VerticalOptions="Center" VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView HorizontalOptions="Fill" HeightRequest="1" BackgroundColor="Teal"/>
+                <Button Text="Log Out" TextColor="White" BackgroundColor="Teal" Command="{Binding CloseSessionCommand}"/>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

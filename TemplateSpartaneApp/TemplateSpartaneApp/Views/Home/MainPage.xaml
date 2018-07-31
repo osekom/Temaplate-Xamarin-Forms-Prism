@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TemplateSpartaneApp.Views.Home.MainPage" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:TemplateSpartaneApp.Controls">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:ToolbarCustom/>
+            <Button Command="{Binding AddItemCommand}" HorizontalOptions="Fill" BackgroundColor="Teal" TextColor="White" Text="Add Progress Report" Margin="10"/>
+            <ListView HasUnevenRows="false" SeparatorVisibility="Default" SeparatorColor="Teal" BackgroundColor="#F6F6F8"   ItemsSource="{Binding Items}" SelectedItem="{Binding ProgressReportModel}">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="TemplateSpartaneApp.Views.Session.LogInPage"
+             xmlns:controls="clr-namespace:TemplateSpartaneApp.Controls" >
+    <ContentPage.Content>
+        <StackLayout Margin="26">
+            <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+            <StackLayout  Margin="0,50" Spacing="20"  HorizontalOptions="Fill">
+                
+                <controls:EntryControl Keyboard="Email" HeightRequest="40" BorderColor="#009688" Icon="users.png" Placeholder="Username" Text="{Binding Username}" HorizontalOptions="Fill"/>
+
+                <controls:EntryControl HeightRequest="40" BorderColor="#009688" Icon="lock.png" Placeholder="Password" Text="{Binding Password}" IsPassword="true" HorizontalOptions="Fill"/>
+
+                <StackLayout 
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Center"
+                    Orientation=" Horizontal"> 
+                    <Label 
+                        Text="Remember session" 
+                        TextColor="Teal" 
+                        FontSize="Large" 
+                        FontAttributes="Bold" />  
+                    <Switch IsToggled="{Binding Remenber}"/>
+                </StackLayout>
+                
+                <Button Command="{Binding LogInCommand}" Text="LogIn" BackgroundColor="Teal" TextColor="White" HorizontalOptions="Fill"/>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
