@@ -13,6 +13,7 @@ namespace TemplateSpartaneApp.ViewModels.Session
 {
     public class LogInPageViewModel : ViewModelBase
     {
+        
         #region Vars
         private static string TAG = nameof(LogInPageViewModel);
         private ISessionService _sessionService;
@@ -20,6 +21,7 @@ namespace TemplateSpartaneApp.ViewModels.Session
 
         #region Vars Commands
         public DelegateCommand LogInCommand { get; set; }
+        public DelegateCommand RecoverPassCommand { get; set; }
         #endregion
 
         #region Properties
@@ -57,6 +59,7 @@ namespace TemplateSpartaneApp.ViewModels.Session
         {
             _sessionService = sessionService;
             LogInCommand = new DelegateCommand(LogInCommandExecuted);
+            RecoverPassCommand = new DelegateCommand(() => NavigationService.NavigateAsync("RecoverPassword"));
         }
         #endregion
 
@@ -64,7 +67,16 @@ namespace TemplateSpartaneApp.ViewModels.Session
         private async void LogInCommandExecuted()
         {
             UserDialogsService.ShowLoading("Loading");
-
+            if(string.IsNullOrEmpty(Username))
+            {
+                UserDialogsService.Alert("User field not entered.", "Alert", "Aceptar");
+                return;
+            }
+            if (string.IsNullOrEmpty(Password))
+            {
+                UserDialogsService.Alert("Password field not entered.", "Alert", "Aceptar");
+                return;
+            }
             var resp = await RunSafeApi<SpartanUserList>(_sessionService.AuthUser(Username, Password));
             UserDialogsService.HideLoading();
             if (resp.Status == TypeReponse.Ok)
@@ -108,5 +120,6 @@ namespace TemplateSpartaneApp.ViewModels.Session
             AppSettings.Instance.RememberUserName = Remenber;
         }
         #endregion
+
     }
 }

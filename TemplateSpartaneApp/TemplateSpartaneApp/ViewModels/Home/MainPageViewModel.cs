@@ -35,6 +35,7 @@ namespace TemplateSpartaneApp.ViewModels.Home
         }
         #endregion
 
+        #region Contructor
         public MainPageViewModel(IProgressReportService progressReportService,
                                  INavigationService navigationService,
                                  IUserDialogs userDialogsService,
@@ -44,8 +45,8 @@ namespace TemplateSpartaneApp.ViewModels.Home
             SelectItemCommand = new DelegateCommand(SelectItemCommandExecute);
             AddItemCommand = new DelegateCommand(AddItemCommandExecute);
             Items = new ObservableCollectionExt<ProgressReportModel>();
-            PopulatingProgressReportList();
         }
+        #endregion
 
         #region Populating
         private async void PopulatingProgressReportList()
@@ -112,12 +113,20 @@ namespace TemplateSpartaneApp.ViewModels.Home
         {
             if (parameters.ContainsKey("refresh"))
             {
-                if(parameters.GetValue<bool>("refresh"))
+                if (parameters.GetValue<bool>("refresh"))
                 {
                     PopulatingProgressReportList();
                 }
             }
         }
         #endregion
+
+        #region Methods Life Cycle Page
+        public override void OnAppearing()
+        {
+            PopulatingProgressReportList();
+        }
+        #endregion
+
     }
 }

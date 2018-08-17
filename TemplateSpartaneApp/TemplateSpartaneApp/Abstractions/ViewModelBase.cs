@@ -3,13 +3,14 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Plugin.Connectivity.Abstractions;
+using Prism.AppModel;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 
 namespace TemplateSpartaneApp.Abstractions
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware
     {
 
         #region Vars
@@ -64,7 +65,7 @@ namespace TemplateSpartaneApp.Abstractions
         #region Methods
         protected async Task<ResponseBase<T>> RunSafeApi<T>(Task<T> runMethod)
         {
-            using(UserDialogsService.Loading())
+            using (UserDialogsService.Loading())
             {
                 var result = new ResponseBase<T>
                 {
@@ -98,6 +99,12 @@ namespace TemplateSpartaneApp.Abstractions
                 return result;
             }
         }
+        #endregion
+
+        #region Methods Cycle Life Page
+        public virtual void OnAppearing(){}
+
+        public virtual void OnDisappearing(){}
         #endregion
 
     }

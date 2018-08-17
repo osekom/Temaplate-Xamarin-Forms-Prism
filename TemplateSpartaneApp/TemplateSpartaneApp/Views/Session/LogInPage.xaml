@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="TemplateSpartaneApp.Views.Session.LogInPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
              xmlns:controls="clr-namespace:TemplateSpartaneApp.Controls" >
     <ContentPage.Content>
         <StackLayout Margin="26">
-            <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Image Source="logo.png" HorizontalOptions="CenterAndExpand" />
 
             <StackLayout  Margin="0,50" Spacing="20"  HorizontalOptions="Fill">
                 
@@ -26,7 +28,7 @@
                 </StackLayout>
                 
                 <Button Command="{Binding LogInCommand}" Text="LogIn" BackgroundColor="Teal" TextColor="White" HorizontalOptions="Fill"/>
-
+                <Button Text="Recover Pass" Command="{Binding RecoverPassCommand}" TextColor="Teal" Margin="20,0,20,0"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
