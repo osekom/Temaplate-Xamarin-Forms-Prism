@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "alexdev",
+  "classifications": [],
+  "description": "",
+  "name": "TemplateSpartaneApp",
+  "defaultName": "TemplateSpartaneApp",
+  "identity": "MyTemplate.TemplateSpartaneApp.CSharp",
+  "groupIdentity": "MyTemplate.TemplateSpartaneApp",
+  "tags": {
+    "language": "C#",
+    "type": "project",
+    "vsmac-category": "other/net/general"
+  },
+  "shortName": "TemplateSpartaneApp",
+  "sourceName": "TemplateSpartaneApp",
+  "guids": [
+    "{812D6AB1-87F5-4C3E-90EC-45D7924BD59A}",
+    "{85A46D59-1E1C-4568-80EC-E9C867B8DA14}",
+    "{B45B117A-3382-47B3-AC0B-CE1E35CBDDC8}"
+  ],
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            ".vs/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "TemplateSpartaneApp/TemplateSpartaneApp/TemplateSpartaneApp.csproj"
+    },
+    {
+      "path": "TemplateSpartaneApp/TemplateSpartaneApp.Android/TemplateSpartaneApp.Android.csproj"
+    },
+    {
+      "path": "TemplateSpartaneApp/TemplateSpartaneApp.iOS/TemplateSpartaneApp.iOS.csproj"
+    }
+  ]
+}

@@ -65,39 +65,32 @@ namespace TemplateSpartaneApp.Abstractions
         #region Methods
         protected async Task<ResponseBase<T>> RunSafeApi<T>(Task<T> runMethod)
         {
-            using (UserDialogsService.Loading())
+            var result = new ResponseBase<T>
             {
-                var result = new ResponseBase<T>
+                Status = TypeReponse.Error,
+                Response = default(T)
+            };
+            if (Connectivity.IsConnected)
+            {
+                try
                 {
-                    Status = TypeReponse.Error,
-                    Response = default(T)
-                };
-                if (Connectivity.IsConnected)
-                {
-                    try
+                    result.Response = await runMethod;
+                    if(!result.Response.Equals(null))
                     {
-                        result.Response = await runMethod;
                         result.Status = TypeReponse.Ok;
                     }
-                    catch (Exception ex)
-                    {
-                        if (ex is TaskCanceledException)
-                        {
-                            UserDialogsService.Alert("Ocurrio un error vuelva a intentarlo.", "Alerta", "Aceptar");
-                        }
-                        else
-                        {
-                            UserDialogsService.Alert("Ocurrio un error vuelva a intentarlo.", "Alerta", "Aceptar");
-                        }
-                        Debug.WriteLine(ex.Message, TAG);
-                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    UserDialogsService.Alert("Verifica tu conexion a internet.", "Alerta", "Aceptar");
+                    Debug.WriteLine(ex.Message, TAG);
                 }
-                return result;
             }
+            else
+            {
+                result.Status = TypeReponse.ErroConnectivity;
+                Debug.WriteLine("Error Connectivity", TAG);
+            }
+            return result;
         }
         #endregion
 

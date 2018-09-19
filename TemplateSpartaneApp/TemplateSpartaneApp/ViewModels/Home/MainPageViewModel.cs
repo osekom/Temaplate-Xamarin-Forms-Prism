@@ -1,4 +1,5 @@
-﻿using Acr.UserDialogs;
+﻿using System.Diagnostics;
+using Acr.UserDialogs;
 using Plugin.Connectivity.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
@@ -13,6 +14,7 @@ namespace TemplateSpartaneApp.ViewModels.Home
     {
 
         #region Vars
+        private static string TAG = nameof(MainPageViewModel);
         public ObservableCollectionExt<ProgressReportModel> Items { get; set; }
         private readonly IProgressReportService _progressReportService;
         #endregion
@@ -124,7 +126,15 @@ namespace TemplateSpartaneApp.ViewModels.Home
         #region Methods Life Cycle Page
         public override void OnAppearing()
         {
-            PopulatingProgressReportList();
+            try
+            {
+                PopulatingProgressReportList();
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine(ex.Message, TAG);
+            }
+
         }
         #endregion
 

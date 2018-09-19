@@ -1,7 +1,7 @@
-﻿#define DEVELOPMENT
+﻿//#define DEVELOPMENT
 //#define PRODUCTION
 //#define DEMO
-//#define TESTING
+#define TESTING
 
 using System.IO;
 using System.Reflection;
