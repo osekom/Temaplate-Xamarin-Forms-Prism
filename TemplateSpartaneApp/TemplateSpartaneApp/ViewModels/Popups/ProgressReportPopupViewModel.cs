@@ -88,7 +88,7 @@ namespace TemplateSpartaneApp.ViewModels.Popups
         #endregion
 
         #region Navigation Methods
-        public override void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if(parameters.ContainsKey("currentProgressReport"))
             {

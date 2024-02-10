@@ -23,7 +23,7 @@ namespace TemplateSpartaneApp.iOS
         //
         public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
-            UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+            UIView statusBar = new UIView(UIApplication.SharedApplication.StatusBarFrame);
             statusBar.BackgroundColor = UIColor.FromRGB(255, 255, 255);
             global::Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
